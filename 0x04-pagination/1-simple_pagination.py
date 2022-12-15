@@ -1,6 +1,8 @@
+'''Simple pagination module'''
+
 import csv
 import math
-from typing import List, Tuple
+from typing import List
 
 
 class Server:
@@ -28,9 +30,8 @@ class Server:
         '''
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
-        pagination: Tuple = index_range(page, page_size)
-        dataset: List = self.dataset()
-        dataset_length = len(dataset)
+        pagination = index_range(page, page_size)
+        dataset = self.dataset()
 
         return (dataset[pagination[0]:pagination[1]])
 
