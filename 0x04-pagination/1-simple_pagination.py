@@ -32,10 +32,7 @@ class Server:
         dataset: List = self.dataset()
         dataset_length = len(dataset)
 
-        if pagination[0] < dataset_length and pagination[1] < dataset_length:
-            return dataset[pagination[0]:pagination[1]]
-        else:
-            return []
+        return (dataset[pagination[0]:pagination[1]])
 
 
 def index_range(page: int, page_size: int):
