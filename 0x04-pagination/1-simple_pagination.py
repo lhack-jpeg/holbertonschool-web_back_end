@@ -39,6 +39,6 @@ class Server:
         try:
             parsed_dataset = dataset[pagination[0]:pagination[1]]
         except Exception:
-            return []
+            return List[List]
 
         return parsed_dataset
