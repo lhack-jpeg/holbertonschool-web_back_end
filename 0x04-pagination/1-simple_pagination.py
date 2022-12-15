@@ -35,10 +35,9 @@ class Server:
         assert page_size > 0
         pagination = index_range(page, page_size)
         dataset = self.dataset()
+        dataset_length = len(dataset)
 
-        try:
-            parsed_dataset = dataset[pagination[0]:pagination[1]]
-        except Exception:
-            return List[List]
-
-        return parsed_dataset
+        if pagination[0] < dataset_length and pagination[1] < dataset_length:
+            return dataset[pagination[0]:pagination[1]]
+        else:
+            return []
