@@ -3,16 +3,7 @@ import math
 from typing import List
 
 
-def index_range(page, page_size):
-    '''
-    Returns a tuple of the size of start of the index and end of the inndex
-    pages are 1-indexed.
-    '''
-
-    end_of_index = page * page_size
-    start_of_index = end_of_index - page_size
-
-    return (start_of_index, end_of_index)
+index_range = __import__('0-simple_helper_function').index_range
 
 
 class Server:
