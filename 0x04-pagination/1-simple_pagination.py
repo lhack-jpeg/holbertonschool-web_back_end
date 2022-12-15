@@ -28,8 +28,8 @@ class Server:
         '''
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
-        pagination = index_range(page, page_size)
-        dataset = self.dataset()
+        pagination: Tuple = index_range(page, page_size)
+        dataset: List = self.dataset()
         dataset_length = len(dataset)
 
         if pagination[0] < dataset_length and pagination[1] < dataset_length:
@@ -38,13 +38,13 @@ class Server:
             return []
 
 
-def index_range(page: int, page_size: int):
+def index_range(page: int, page_size: int) -> Tuple(int, int):
     '''
     Returns a tuple of the size of start of the index and end of the inndex
     pages are 1-indexed.
     '''
 
-    end_of_index = page * page_size
-    start_of_index = end_of_index - page_size
+    end_of_index: int = page * page_size
+    start_of_index: int = end_of_index - page_size
 
     return (start_of_index, end_of_index)
