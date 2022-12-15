@@ -3,7 +3,7 @@ import math
 from typing import List
 
 
-def index_range(self, page, page_size):
+def index_range(page, page_size):
     '''
     Returns a tuple of the size of start of the index and end of the inndex
     pages are 1-indexed.
