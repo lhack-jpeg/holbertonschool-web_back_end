@@ -1,9 +1,6 @@
 import csv
 import math
-from typing import List
-
-
-index_range = __import__('0-simple_helper_function').index_range
+from typing import List, Tuple
 
 
 class Server:
@@ -29,10 +26,8 @@ class Server:
         '''
         Gets the start of the page and the end of the page.
         '''
-        assert type(page) == int
-        assert type(page_size) == int
-        assert page > 0
-        assert page_size > 0
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
         pagination = index_range(page, page_size)
         dataset = self.dataset()
         dataset_length = len(dataset)
@@ -41,3 +36,15 @@ class Server:
             return dataset[pagination[0]:pagination[1]]
         else:
             return []
+
+
+def index_range(page: int, page_size: int) -> Tuple(int, int):
+    '''
+    Returns a tuple of the size of start of the index and end of the inndex
+    pages are 1-indexed.
+    '''
+
+    end_of_index = page * page_size
+    start_of_index = end_of_index - page_size
+
+    return (start_of_index, end_of_index)
