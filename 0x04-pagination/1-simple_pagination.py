@@ -38,7 +38,7 @@ class Server:
             return []
 
 
-def index_range(page: int, page_size: int) -> Tuple(int, int):
+def index_range(page: int, page_size: int):
     '''
     Returns a tuple of the size of start of the index and end of the inndex
     pages are 1-indexed.
