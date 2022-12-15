@@ -3,6 +3,18 @@ import math
 from typing import List
 
 
+def index_range(self, page, page_size):
+    '''
+    Returns a tuple of the size of start of the index and end of the inndex
+    pages are 1-indexed.
+    '''
+
+    end_of_index = page * page_size
+    start_of_index = end_of_index - page_size
+
+    return (start_of_index, end_of_index)
+
+
 class Server:
     """Server class to paginate a database of popular baby names.
     """
@@ -30,7 +42,7 @@ class Server:
         assert type(page_size) == int
         assert page > 0
         assert page_size > 0
-        pagination = self.index_range(page, page_size)
+        pagination = index_range(page, page_size)
         dataset = self.dataset()
 
         try:
@@ -39,14 +51,3 @@ class Server:
             return []
 
         return parsed_dataset
-
-    def index_range(self, page, page_size):
-        '''
-        Returns a tuple of the size of start of the index and end of the inndex
-        pages are 1-indexed.
-        '''
-
-        end_of_index = page * page_size
-        start_of_index = end_of_index - page_size
-
-        return (start_of_index, end_of_index)
