@@ -47,7 +47,7 @@ class Server:
 
         try:
             parsed_dataset = dataset[pagination[0]:pagination[1]]
-        except Exception as e:
+        except Exception:
             return []
 
         return parsed_dataset
