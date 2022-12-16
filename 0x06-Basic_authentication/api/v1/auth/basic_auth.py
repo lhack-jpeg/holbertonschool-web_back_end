@@ -14,7 +14,8 @@ class BasicAuth(Auth):
     '''
 
     def extract_base64_authorization_header(self,
-                                            authorization_header: str) -> str:
+                                            authorization_header: str)\
+            -> str:
         '''
         Checks the authorisation header for Basic string to encode in Base64.
         '''
