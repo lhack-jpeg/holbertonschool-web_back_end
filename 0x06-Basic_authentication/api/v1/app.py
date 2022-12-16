@@ -20,7 +20,7 @@ if getenv('AUTH') is not None:
     auth = Auth()
 
 
-@app.before_request()
+@app.before_request
 def load_auth():
     '''
     Handle the authorisation when the app loads.
