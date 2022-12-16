@@ -36,8 +36,16 @@ class Auth():
     def authorization_header(self, request=None) -> str:
         '''
         Handles the request object header from flask.
+        Checks to see if requests contains the header key Authorisation.
+        Returns the value of the header request Authorisation.
         '''
-        return None
+        if request is None:
+            return None
+
+        if request.headers.get('Authorization') is not None:
+            return request.headers.get('Authorization')
+        else:
+            return None
 
     def current_user(self, request=None) -> TypeVar('User'):
         '''
