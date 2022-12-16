@@ -5,6 +5,7 @@ Module for the authorisation manager in the API.
 
 from flask import request
 from typing import List, TypeVar
+from os import getenv
 
 
 class Auth():
@@ -49,3 +50,13 @@ class Auth():
         Checks to see the current user from the request object.
         '''
         return None
+
+    def session_cookie(self, request=None):
+        '''
+        Returns a cookie value from a request cookie.
+        The env variable is stored under session.
+        '''
+        if request is None:
+            return None
+        session_name_id = getenv('SESSION_NAME')
+        return request.cookies.get(session_name_id)
