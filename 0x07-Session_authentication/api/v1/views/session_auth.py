@@ -12,11 +12,8 @@ from os import getenv
                  methods=['POST'],
                  strict_slashes=False)
 def session_auth_form():
-    print(request.form)
     email = request.form.get('email')
-    print('email: ', email)
     password = request.form.get('password')
-    print('password: ',password)
 
     if email is None:
         err_msg = jsonify({"error": "email missing"})
