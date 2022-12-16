@@ -33,3 +33,12 @@ def unathorised():
     Causes custom abort page for 401 response code.
     '''
     abort(401)
+
+
+@app_views.route('/forbidden', strict_slashes=False)
+def forbidden():
+    '''
+    GET /api/v1/forbidden
+    Endpoint for forbidden status response.
+    '''
+    abort(403)
