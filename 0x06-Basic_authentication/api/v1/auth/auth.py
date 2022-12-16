@@ -49,4 +49,4 @@ class Auth():
         '''
         Checks to see the current user from the request object.
         '''
-        return request
+        return None
