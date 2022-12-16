@@ -6,6 +6,8 @@ Class inherits from auth.
 from api.v1.auth.auth import Auth
 from base64 import b64decode
 import binascii
+from models.user import User
+from typing import TypeVar
 
 
 class BasicAuth(Auth):
@@ -64,3 +66,26 @@ class BasicAuth(Auth):
         email_pass_str = decoded_base64_authorization_header.split(':')
 
         return(email_pass_str[0], email_pass_str[1])
+
+    def user_object_from_credentials(self,
+                                     user_email: str,
+                                     user_pwd: str) -> TypeVar('User'):
+        '''
+        Returns the user based of on the email and password.
+        '''
+        if not isinstance(user_email, str) or user_email is None:
+            return None
+
+        if not isinstance(user_pwd, str) or user_pwd is None:
+            return None
+
+        try:
+            existing_user = User.search({'email': user_email})
+        except Exception:
+            return None
+
+        for user in existing_user:
+            if user.is_valid_password(user_pwd):
+                return user
+
+        return None
