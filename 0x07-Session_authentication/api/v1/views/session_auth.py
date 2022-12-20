@@ -12,6 +12,9 @@ from os import getenv
                  methods=['POST'],
                  strict_slashes=False)
 def session_auth_form():
+    '''
+    Handles the login route for the user. 
+    '''
     email = request.form.get('email')
     password = request.form.get('password')
 
@@ -31,7 +34,6 @@ def session_auth_form():
         response = make_response(err_msg, 404)
         abort(response)
 
-# ! remove print debugging and iterate over list instead of using an index.
     from api.v1.app import auth
     for user in users:
         if user.is_valid_password(password):
