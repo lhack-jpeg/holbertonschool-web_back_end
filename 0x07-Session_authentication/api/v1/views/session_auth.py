@@ -13,7 +13,7 @@ from os import getenv
                  strict_slashes=False)
 def session_auth_form():
     '''
-    Handles the login route for the user. 
+    Handles the login route for the user.
     '''
     email = request.form.get('email')
     password = request.form.get('password')
