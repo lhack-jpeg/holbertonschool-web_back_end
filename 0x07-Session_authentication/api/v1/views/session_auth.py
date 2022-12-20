@@ -31,6 +31,7 @@ def session_auth_form():
         response = make_response(err_msg, 404)
         abort(response)
 
+# ! remove print debugging and iterate over list instead of using an index.
     if users[0].is_valid_password(password):
         from api.v1.app import auth
         for user in users:
@@ -40,9 +41,6 @@ def session_auth_form():
             response.set_cookie(session_name, session_id)
             return response
 
-   
-    err_msg = jsonify({ "error": "wrong password" })
+    err_msg = jsonify({"error": "wrong password"})
     response = make_response(err_msg, 401)
     abort(response)
-
-    
