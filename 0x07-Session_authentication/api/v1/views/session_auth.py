@@ -40,9 +40,6 @@ def session_auth_form():
             response.set_cookie(session_name, session_id)
             return response
 
-   
-    err_msg = jsonify({ "error": "wrong password" })
+    err_msg = jsonify({"error": "wrong password"})
     response = make_response(err_msg, 401)
     abort(response)
-
-    
