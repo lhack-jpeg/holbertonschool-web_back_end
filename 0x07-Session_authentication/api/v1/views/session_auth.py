@@ -31,6 +31,7 @@ def session_auth_form():
         response = make_response(err_msg, 404)
         abort(response)
 
+# ! remove print debugging and iterate over list instead of using an index.
     if users[0].is_valid_password(password):
         from api.v1.app import auth
         for user in users:
