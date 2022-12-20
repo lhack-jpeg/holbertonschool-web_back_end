@@ -32,9 +32,9 @@ def session_auth_form():
         abort(response)
 
 # ! remove print debugging and iterate over list instead of using an index.
-    if users[0].is_valid_password(password):
-        from api.v1.app import auth
-        for user in users:
+    from api.v1.app import auth
+    for user in users:
+        if user.is_valid_password(password):
             session_id = auth.create_session(user.id)
             session_name = getenv('SESSION_NAME')
             response = make_response(user.to_json())
