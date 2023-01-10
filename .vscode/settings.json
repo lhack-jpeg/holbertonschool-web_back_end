@@ -1,0 +1,12 @@
+{
+    "python.formatting.provider": "none",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8",
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "modifications",
+        "editor.tabSize": 4
+    },
+    "python.linting.pycodestyleEnabled": true,
+    "python.linting.enabled": true,
+    "editor.formatOnSave": true,
+}
