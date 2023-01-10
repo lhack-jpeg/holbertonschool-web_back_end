@@ -5,6 +5,7 @@
 from api.v1.views import app_views
 from flask import abort, jsonify, request, make_response
 from models.user import User
+from api.v1.app import auth
 from os import getenv
 
 
@@ -46,3 +47,17 @@ def session_auth_form():
     err_msg = jsonify({"error": "wrong password"})
     response = make_response(err_msg, 401)
     abort(response)
+
+
+@app_views.route('/auth_session/logout',
+                 methods=['DELETE'],
+                 strict_slashes=False)
+def session_logout():
+    '''
+    Handles the logout route.
+    '''
+    destory_session = auth.destroy_session(request)
+    if destory_session is False:
+        abort(404)
+
+    return jsonify({}), 200
