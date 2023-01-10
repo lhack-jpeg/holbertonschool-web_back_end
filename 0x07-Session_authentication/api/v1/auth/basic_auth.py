@@ -65,7 +65,7 @@ class BasicAuth(Auth):
             return (None, None)
         email_pass_str = decoded_base64_authorization_header.split(':')
 
-        return(email_pass_str[0], email_pass_str[1])
+        return (email_pass_str[0], email_pass_str[1])
 
     def user_object_from_credentials(self,
                                      user_email: str,
@@ -113,4 +113,5 @@ class BasicAuth(Auth):
         if user_credentials[0] is None or user_credentials[1] is None:
             return None
 
-        return self.user_object_from_credentials(user_credentials[0], user_credentials[1])
+        return self.user_object_from_credentials(
+            user_credentials[0], user_credentials[1])
